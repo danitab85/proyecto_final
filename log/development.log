@@ -347,3 +347,984 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 1300ms (Views: 1273.8ms | ActiveRecord: 5.8ms)
 
 
+Started GET "/" for 127.0.0.1 at 2019-10-01 14:36:37 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 40ms (Views: 36.9ms | ActiveRecord: 1.3ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1683213154861075425)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBillings (20191001174106)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.9ms)[0m  [1m[35mCREATE TABLE "billings" ("id" bigserial primary key, "code" character varying, "payment_method" character varying, "amount" decimal(5,2), "currency" character varying, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_d31ab0cf92"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (40.9ms)[0m  [1m[35mCREATE  INDEX  "index_billings_on_user_id" ON "billings"  ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191001174106"]]
+  [1m[35m (26.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(1683213154861075425)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1683213154861075425)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddBillingToOrder (20191001174356)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "orders" ADD "billing_id" bigint[0m
+  [1m[35m (59.3ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_billing_id" ON "orders"  ("billing_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_0eb0e9e545"
+FOREIGN KEY ("billing_id")
+  REFERENCES "billings" ("id")
+[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191001174356"]]
+  [1m[35m (25.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1683213154861075425)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-10-01 14:56:03 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '{', expecting end
+...ion only: [:create, :destroy] { request.env["devise.skip_tim...
+...                              ^
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '}', expecting end
+..."devise.skip_timeout"] = true }
+...                              ^):
+  
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '{', expecting end
+...ion only: [:create, :destroy] { request.env["devise.skip_tim...
+...                              ^
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '}', expecting end
+..."devise.skip_timeout"] = true }
+...                              ^
+activesupport (5.1.3) lib/active_support/dependencies.rb:476:in `load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:476:in `block in load_file'
+activesupport (5.1.3) lib/active_support/dependencies.rb:661:in `new_constants_in'
+activesupport (5.1.3) lib/active_support/dependencies.rb:475:in `load_file'
+activesupport (5.1.3) lib/active_support/dependencies.rb:374:in `block in require_or_load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:36:in `block in load_interlock'
+activesupport (5.1.3) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.1.3) lib/active_support/concurrency/share_lock.rb:149:in `exclusive'
+activesupport (5.1.3) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.1.3) lib/active_support/dependencies.rb:36:in `load_interlock'
+activesupport (5.1.3) lib/active_support/dependencies.rb:357:in `require_or_load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:510:in `load_missing_constant'
+activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:271:in `const_get'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:271:in `block in constantize'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `constantize'
+activesupport (5.1.3) lib/active_support/dependencies.rb:582:in `get'
+activesupport (5.1.3) lib/active_support/dependencies.rb:613:in `constantize'
+actionpack (5.1.3) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-10-01 14:56:05 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 113ms (Views: 95.0ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-10-01 14:56:08 -0300
+  
+SyntaxError (/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '{', expecting end
+...ion only: [:create, :destroy] { request.env["devise.skip_tim...
+...                              ^
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '}', expecting end
+..."devise.skip_timeout"] = true }
+...                              ^):
+  
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '{', expecting end
+...ion only: [:create, :destroy] { request.env["devise.skip_tim...
+...                              ^
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '}', expecting end
+..."devise.skip_timeout"] = true }
+...                              ^
+activesupport (5.1.3) lib/active_support/dependencies.rb:476:in `load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:476:in `block in load_file'
+activesupport (5.1.3) lib/active_support/dependencies.rb:661:in `new_constants_in'
+activesupport (5.1.3) lib/active_support/dependencies.rb:475:in `load_file'
+activesupport (5.1.3) lib/active_support/dependencies.rb:374:in `block in require_or_load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:36:in `block in load_interlock'
+activesupport (5.1.3) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.1.3) lib/active_support/concurrency/share_lock.rb:149:in `exclusive'
+activesupport (5.1.3) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.1.3) lib/active_support/dependencies.rb:36:in `load_interlock'
+activesupport (5.1.3) lib/active_support/dependencies.rb:357:in `require_or_load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:510:in `load_missing_constant'
+activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:271:in `const_get'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:271:in `block in constantize'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `constantize'
+activesupport (5.1.3) lib/active_support/dependencies.rb:582:in `get'
+activesupport (5.1.3) lib/active_support/dependencies.rb:613:in `constantize'
+actionpack (5.1.3) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-10-01 14:56:14 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 33ms (Views: 30.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/products/1/orders" for 127.0.0.1 at 2019-10-01 14:56:20 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"MOrCynpw/gTVq+ncc+leY4R6AJqbadOiBCfse38ZqzrsirErltdp165Kln0clnoI4f4q6JJOvqdi3sCHqdJgkA==", "product_id"=>"1"}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-10-01 14:56:21 -0300
+  
+SyntaxError (/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '{', expecting end
+...ion only: [:create, :destroy] { request.env["devise.skip_tim...
+...                              ^
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '}', expecting end
+..."devise.skip_timeout"] = true }
+...                              ^):
+  
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '{', expecting end
+...ion only: [:create, :destroy] { request.env["devise.skip_tim...
+...                              ^
+/home/daniela/.rvm/gems/ruby-2.6.3/bundler/gems/devise-71fc5b351a8e/app/controllers/devise/sessions_controller.rb:5: syntax error, unexpected '}', expecting end
+..."devise.skip_timeout"] = true }
+...                              ^
+activesupport (5.1.3) lib/active_support/dependencies.rb:476:in `load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:476:in `block in load_file'
+activesupport (5.1.3) lib/active_support/dependencies.rb:661:in `new_constants_in'
+activesupport (5.1.3) lib/active_support/dependencies.rb:475:in `load_file'
+activesupport (5.1.3) lib/active_support/dependencies.rb:374:in `block in require_or_load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:36:in `block in load_interlock'
+activesupport (5.1.3) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.1.3) lib/active_support/concurrency/share_lock.rb:149:in `exclusive'
+activesupport (5.1.3) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.1.3) lib/active_support/dependencies.rb:36:in `load_interlock'
+activesupport (5.1.3) lib/active_support/dependencies.rb:357:in `require_or_load'
+activesupport (5.1.3) lib/active_support/dependencies.rb:510:in `load_missing_constant'
+activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:271:in `const_get'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:271:in `block in constantize'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `constantize'
+activesupport (5.1.3) lib/active_support/dependencies.rb:582:in `get'
+activesupport (5.1.3) lib/active_support/dependencies.rb:613:in `constantize'
+actionpack (5.1.3) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-10-01 14:56:47 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (728.6ms)
+Completed 200 OK in 1225ms (Views: 1114.7ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-10-01 14:56:52 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__282891928636373887_70064539881220 at /home/daniela/Escritorio/desafio-latam/Semana9/e-comerce/app/views/devise/registrations/new.html.erb:4)
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 36ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-10-01 14:57:08 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/Qsr4JU+OqsANSAvCkYj13Jpeygi/u3uysfGPjIWqbmeQgLIuRAYn8zYjgDVWRCEM6TAmupRvgKY6n3lNrJ91Q==", "user"=>{"name"=>"Daniela", "email"=>"danidani@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "danidani@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "danidani@gmail.com"], ["encrypted_password", "$2a$11$P1Zpoa64GuIKpINzYMdGFexqIKOwRKlTrALtO.TlM0E7Uny0XfHQK"], ["name", "Daniela"], ["created_at", "2019-10-01 17:57:08.725373"], ["updated_at", "2019-10-01 17:57:08.725373"]]
+  [1m[35m (16.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2019-10-01 17:57:08.745617"], ["last_sign_in_at", "2019-10-01 17:57:08.745617"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2019-10-01 17:57:08.747350"], ["id", 1]]
+  [1m[35m (12.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 449ms (ActiveRecord: 33.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-01 14:57:08 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (24.5ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 64ms (Views: 49.2ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/products/1/orders" for 127.0.0.1 at 2019-10-01 14:57:15 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"a4dgSxfU1oV2FaWVZYz8Tu4jKiHFCbbaFTXzNIC98Cy35xOq+3NBVg302jQK89gli6cAU8wu299zzN/IVnY7hg==", "product_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 1 AND "orders"."product_id" = 1 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 90], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "product_id", "created_at", "updated_at", "price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["product_id", 1], ["created_at", "2019-10-01 17:57:15.927048"], ["updated_at", "2019-10-01 17:57:15.927048"], ["price", 90]]
+  [1m[35m (21.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "quantity" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", "2019-10-01 17:57:15.952597"], ["quantity", 1], ["id", 1]]
+  [1m[35m (72.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 149ms (ActiveRecord: 102.8ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-01 14:57:16 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (9.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 36.0ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/products/2/orders" for 127.0.0.1 at 2019-10-01 14:57:18 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"oex03nx/wEgZlLfz5JcHueYhMSWl73iWZldem1ZT0tJ9jAc/kNhXm2J1yFKL6CPSg6UbV6zIFZMArnJngJgZeA==", "product_id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (6.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (4.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 1 AND "orders"."product_id" = 2 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 55], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "product_id", "created_at", "updated_at", "price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["product_id", 2], ["created_at", "2019-10-01 17:57:18.775217"], ["updated_at", "2019-10-01 17:57:18.775217"], ["price", 55]]
+  [1m[35m (261.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "quantity" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", "2019-10-01 17:57:19.040447"], ["quantity", 1], ["id", 2]]
+  [1m[35m (80.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 372ms (ActiveRecord: 355.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-01 14:57:19 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (8.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 49ms (Views: 45.1ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/products/3/orders" for 127.0.0.1 at 2019-10-01 14:57:20 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"ZVuStoEtYDSeKAFExVn0ZfN/F50s8uDY3nOtymqtF7C5O+FXbYr35+XJfuWqJtAOlvs97yXVjd24ioE2vGbcGg==", "product_id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 1 AND "orders"."product_id" = 3 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 99], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "product_id", "created_at", "updated_at", "price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["product_id", 3], ["created_at", "2019-10-01 17:57:20.932341"], ["updated_at", "2019-10-01 17:57:20.932341"], ["price", 99]]
+  [1m[35m (95.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "quantity" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", "2019-10-01 17:57:21.033310"], ["quantity", 1], ["id", 3]]
+  [1m[35m (51.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 164ms (ActiveRecord: 151.8ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-01 14:57:21 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 76ms (Views: 72.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2019-10-01 14:58:16 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/todos"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/products" for 127.0.0.1 at 2019-10-01 14:58:31 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (8.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 42ms (Views: 38.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-01 14:58:34 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 53ms (Views: 31.9ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-01 15:20:48 -0300
+Processing by BillingsController#pre_pay as HTML
+Completed 406 Not Acceptable in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (BillingsController#pre_pay is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.1.3) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.3) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/orders" for 127.0.0.1 at 2019-10-01 15:23:47 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 45ms (Views: 34.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-01 15:23:49 -0300
+Processing by BillingsController#pre_pay as HTML
+Completed 406 Not Acceptable in 28ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (BillingsController#pre_pay is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.1.3) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.3) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/orders" for 127.0.0.1 at 2019-10-01 15:23:51 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 41ms (Views: 32.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-01 15:24:06 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BillingsController#pre_pay as HTML
+Completed 406 Not Acceptable in 39ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (BillingsController#pre_pay is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.1.3) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
+actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.3) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/orders" for 127.0.0.1 at 2019-10-01 15:24:50 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (48.6ms)
+Completed 200 OK in 397ms (Views: 292.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-01 15:24:52 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 1b0717c4-5b6e-462a-b703-c2d3967323e6
+Request[post]: https://api.sandbox.paypal.com/v1/oauth2/token
+Request.body=grant_type=client_credentials	request.header={"User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "Content-Type"=>"application/x-www-form-urlencoded", "Authorization"=>"Basic RUJXS2psRUxLTVlxUk5RNnNZdkZvNjRGdGFSTFJSNUJkSEVFU21oYTQ5VE06RU80MjJkbjNnUUxnRGJ1d3FUanpyRmdGdGFSTFJSNUJkSEVFU21oYTQ5VE0=", "PayPal-Request-Id"=>"1b0717c4-5b6e-462a-b703-c2d3967323e6"}
+Response[200]: OK, Duration: 0.869s
+Response.body={"scope":"https://uri.paypal.com/services/customer/partner-referrals/readwrite https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/developer/.* https://uri.paypal.com/services/invoicing openid https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/risk/raas/transaction-context https://uri.paypal.com/services/applications/webhooks https://api.paypal.com/v1/vault/credit-card","access_token":"A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q","token_type":"Bearer","app_id":"APP-2EJ531395M785864S","expires_in":32031,"nonce":"2019-10-01T18:18:44ZwvLxvYL89RHu7RGbvaUwxqFXy9p2yib2CEsZocbN1fQ"}	Response.header={"date"=>["Tue, 01 Oct 2019 18:24:53 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["ce139e7e47a9f", "ce139e7e47a9f"], "x-paypal-token-service"=>["IAAS"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D4120482653%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 18:54:53 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["676"], "connection"=>["close"], "content-type"=>["application/json"]}
+PayPal-Request-Id: 1b0717c4-5b6e-462a-b703-c2d3967323e6
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment
+Request.body={"intent":"sale","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"currency":"USD","total":"244"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"sku":"1","name":"Aerodynamic Aluminum Wallet","quantity":"1","price":"90","currency":"USD"},{"sku":"2","name":"Mediocre Plastic Plate","quantity":"1","price":"55","currency":"USD"},{"sku":"3","name":"Mediocre Wooden Bag","quantity":"1","price":"99","currency":"USD"}]}}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute","cancel_url":"http://localhost:3000/"}}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"1b0717c4-5b6e-462a-b703-c2d3967323e6"}
+Response[201]: Created, Duration: 1.322s
+Response.body={"id":"PAYID-LWJZT5Q31Y87044U36926841","intent":"sale","state":"created","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"total":"244.00","currency":"USD"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2019-10-01T18:24:54Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT5Q31Y87044U36926841","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-07951928JD773153D","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT5Q31Y87044U36926841/execute","rel":"execute","method":"POST"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 18:24:54 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["e215e2131b77f", "e215e2131b77f"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D4137259869%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 18:54:54 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["987"], "connection"=>["close"], "content-type"=>["application/json"]}
+Redirected to https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-07951928JD773153D
+Completed 302 Found in 2259ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-01 15:24:58 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 13223c3e-dc69-4657-939c-b1d6a6659e3d
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment
+Request.body={"intent":"sale","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"currency":"USD","total":"244"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"sku":"1","name":"Aerodynamic Aluminum Wallet","quantity":"1","price":"90","currency":"USD"},{"sku":"2","name":"Mediocre Plastic Plate","quantity":"1","price":"55","currency":"USD"},{"sku":"3","name":"Mediocre Wooden Bag","quantity":"1","price":"99","currency":"USD"}]}}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute","cancel_url":"http://localhost:3000/"}}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"13223c3e-dc69-4657-939c-b1d6a6659e3d"}
+Response[201]: Created, Duration: 1.409s
+Response.body={"id":"PAYID-LWJZT6Y4NV41528MB467444X","intent":"sale","state":"created","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"total":"244.00","currency":"USD"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2019-10-01T18:24:58Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-9KS81619WX892022X","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X/execute","rel":"execute","method":"POST"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 18:24:58 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["77d15d7c11f9", "77d15d7c11f9"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D4204368733%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 18:54:59 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["987"], "connection"=>["close"], "content-type"=>["application/json"]}
+Redirected to https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-9KS81619WX892022X
+Completed 302 Found in 1429ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/billings/execute?paymentId=PAYID-LWJZT6Y4NV41528MB467444X&token=EC-9KS81619WX892022X&PayerID=MX5Q9NRFDTUJ6" for 127.0.0.1 at 2019-10-01 16:01:35 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/billings/execute"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/billings/execute?paymentId=PAYID-LWJZT6Y4NV41528MB467444X&token=EC-9KS81619WX892022X&PayerID=MX5Q9NRFDTUJ6" for 127.0.0.1 at 2019-10-01 16:22:24 -0300
+Processing by BillingsController#execute as HTML
+  Parameters: {"paymentId"=>"PAYID-LWJZT6Y4NV41528MB467444X", "token"=>"EC-9KS81619WX892022X", "PayerID"=>"MX5Q9NRFDTUJ6"}
+Request[get]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X
+Request.body=null	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)"}
+Response[200]: OK, Duration: 1.005s
+Response.body={"id":"PAYID-LWJZT6Y4NV41528MB467444X","intent":"sale","state":"created","cart":"9KS81619WX892022X","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"daniela@gmail.com","first_name":"Daniela","last_name":"Ballesteros","payer_id":"MX5Q9NRFDTUJ6","shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"244.00","currency":"USD"},"payee":{"merchant_id":"QRXN4HS77YL92","email":"PPX.DevNet-facilitator@gmail.com"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","quantity":1}],"shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[]}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute?paymentId=PAYID-LWJZT6Y4NV41528MB467444X","cancel_url":"http://localhost:3000/"},"create_time":"2019-10-01T18:24:58Z","update_time":"2019-10-01T19:22:25Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X/execute","rel":"execute","method":"POST"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-9KS81619WX892022X","rel":"approval_url","method":"REDIRECT"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 19:22:25 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["64a1d24444b94", "64a1d24444b94"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1906807645%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 19:52:25 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["1750"], "connection"=>["close"], "content-type"=>["application/json"]}
+PayPal-Request-Id: 9ffea0ce-b04e-4dd6-b9a7-3535413ed372
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X/execute
+Request.body={"payer_id":"MX5Q9NRFDTUJ6"}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"9ffea0ce-b04e-4dd6-b9a7-3535413ed372"}
+Response[200]: OK, Duration: 2.238s
+Response.body={"id":"PAYID-LWJZT6Y4NV41528MB467444X","intent":"sale","state":"approved","cart":"9KS81619WX892022X","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"daniela@gmail.com","first_name":"Daniela","last_name":"Ballesteros","payer_id":"MX5Q9NRFDTUJ6","shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"244.00","currency":"USD","details":{"subtotal":"244.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payee":{"merchant_id":"QRXN4HS77YL92","email":"PPX.DevNet-facilitator@gmail.com"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","tax":"0.00","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","tax":"0.00","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"4H590591U0572445D","state":"completed","amount":{"total":"244.00","currency":"USD","details":{"subtotal":"244.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"7.38","currency":"USD"},"parent_payment":"PAYID-LWJZT6Y4NV41528MB467444X","create_time":"2019-10-01T19:22:26Z","update_time":"2019-10-01T19:22:26Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/4H590591U0572445D","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/4H590591U0572445D/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X","rel":"parent_payment","method":"GET"}]}}]}],"create_time":"2019-10-01T18:24:58Z","update_time":"2019-10-01T19:22:26Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X","rel":"self","method":"GET"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 19:22:26 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["d46b9afb29291", "d46b9afb29291"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1923584861%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 19:52:27 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["2391"], "connection"=>["close"], "content-type"=>["application/json"]}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3255ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/billings/execute?paymentId=PAYID-LWJZT6Y4NV41528MB467444X&token=EC-9KS81619WX892022X&PayerID=MX5Q9NRFDTUJ6" for 127.0.0.1 at 2019-10-01 16:24:23 -0300
+Processing by BillingsController#execute as HTML
+  Parameters: {"paymentId"=>"PAYID-LWJZT6Y4NV41528MB467444X", "token"=>"EC-9KS81619WX892022X", "PayerID"=>"MX5Q9NRFDTUJ6"}
+Request[get]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X
+Request.body=null	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)"}
+Response[200]: OK, Duration: 0.938s
+Response.body={"id":"PAYID-LWJZT6Y4NV41528MB467444X","intent":"sale","state":"approved","cart":"9KS81619WX892022X","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"daniela@gmail.com","first_name":"Daniela","last_name":"Ballesteros","payer_id":"MX5Q9NRFDTUJ6","shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"phone":"4083670933","country_code":"US"}},"transactions":[{"amount":{"total":"244.00","currency":"USD","details":{"subtotal":"244.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payee":{"merchant_id":"QRXN4HS77YL92","email":"PPX.DevNet-facilitator@gmail.com"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","tax":"0.00","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","tax":"0.00","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"4H590591U0572445D","state":"completed","amount":{"total":"244.00","currency":"USD","details":{"subtotal":"244.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"7.38","currency":"USD"},"parent_payment":"PAYID-LWJZT6Y4NV41528MB467444X","create_time":"2019-10-01T19:22:26Z","update_time":"2019-10-01T19:22:26Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/4H590591U0572445D","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/4H590591U0572445D/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X","rel":"parent_payment","method":"GET"}]}}]}],"create_time":"2019-10-01T18:24:59Z","update_time":"2019-10-01T19:22:26Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X","rel":"self","method":"GET"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 19:24:24 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["bde3f56e4266f", "bde3f56e4266f"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D3903296349%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 19:54:24 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["2412"], "connection"=>["close"], "content-type"=>["application/json"]}
+PayPal-Request-Id: 8840fc3f-7976-4da2-93e0-f7e386dfac1d
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJZT6Y4NV41528MB467444X/execute
+Request.body={"payer_id":"MX5Q9NRFDTUJ6"}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"8840fc3f-7976-4da2-93e0-f7e386dfac1d"}
+Response[400]: Bad Request, Duration: 0.883s
+Response.body={"name":"PAYMENT_ALREADY_DONE","message":"Payment has been done already for this cart.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"f195883b32df4"}	Response.header={"date"=>["Tue, 01 Oct 2019 19:24:25 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["f195883b32df4", "f195883b32df4"], "content-language"=>["*"], "connection"=>["close"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D3920073565%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 19:54:25 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["191"], "content-type"=>["application/json"]}
+  Rendering text template
+  Rendered text template (0.1ms)
+Completed 200 OK in 1832ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/?token=EC-9KS81619WX892022X" for 127.0.0.1 at 2019-10-01 16:29:19 -0300
+Processing by ProductsController#index as HTML
+  Parameters: {"token"=>"EC-9KS81619WX892022X"}
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (20.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 84ms (Views: 63.9ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-01 16:29:28 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 71ms (Views: 49.0ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-01 16:29:31 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 1ea89c81-367b-4bac-bdb3-3344159e6cc7
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment
+Request.body={"intent":"sale","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"currency":"USD","total":"244"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"sku":"1","name":"Aerodynamic Aluminum Wallet","quantity":"1","price":"90","currency":"USD"},{"sku":"2","name":"Mediocre Plastic Plate","quantity":"1","price":"55","currency":"USD"},{"sku":"3","name":"Mediocre Wooden Bag","quantity":"1","price":"99","currency":"USD"}]}}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute","cancel_url":"http://localhost:3000/"}}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"1ea89c81-367b-4bac-bdb3-3344159e6cc7"}
+Response[201]: Created, Duration: 1.460s
+Response.body={"id":"PAYID-LWJ2SHI2W499870G64954729","intent":"sale","state":"created","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"total":"244.00","currency":"USD"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2019-10-01T19:29:33Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SHI2W499870G64954729","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7LM479999X919701L","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SHI2W499870G64954729/execute","rel":"execute","method":"POST"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 19:29:32 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["a3b8335fde494", "a3b8335fde494"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D480875357%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 19:59:33 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["987"], "connection"=>["close"], "content-type"=>["application/json"]}
+Redirected to https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7LM479999X919701L
+Completed 302 Found in 1482ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-01 16:29:35 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 76fc7468-87a3-495e-a351-df8f9eea1f44
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment
+Request.body={"intent":"sale","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"currency":"USD","total":"244"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"sku":"1","name":"Aerodynamic Aluminum Wallet","quantity":"1","price":"90","currency":"USD"},{"sku":"2","name":"Mediocre Plastic Plate","quantity":"1","price":"55","currency":"USD"},{"sku":"3","name":"Mediocre Wooden Bag","quantity":"1","price":"99","currency":"USD"}]}}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute","cancel_url":"http://localhost:3000/"}}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"76fc7468-87a3-495e-a351-df8f9eea1f44"}
+Response[201]: Created, Duration: 1.263s
+Response.body={"id":"PAYID-LWJ2SII4AJ685050C705974J","intent":"sale","state":"created","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"total":"244.00","currency":"USD"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2019-10-01T19:29:37Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-76V38303RE9333627","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J/execute","rel":"execute","method":"POST"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 19:29:37 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["fa704d0b526ad", "fa704d0b526ad"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D564761437%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 19:59:37 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["987"], "connection"=>["close"], "content-type"=>["application/json"]}
+Redirected to https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-76V38303RE9333627
+Completed 302 Found in 1291ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/billings/execute?paymentId=PAYID-LWJ2SII4AJ685050C705974J&token=EC-76V38303RE9333627&PayerID=MX5Q9NRFDTUJ6" for 127.0.0.1 at 2019-10-01 16:29:58 -0300
+Processing by BillingsController#execute as HTML
+  Parameters: {"paymentId"=>"PAYID-LWJ2SII4AJ685050C705974J", "token"=>"EC-76V38303RE9333627", "PayerID"=>"MX5Q9NRFDTUJ6"}
+Request[get]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J
+Request.body=null	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)"}
+Response[200]: OK, Duration: 0.896s
+Response.body={"id":"PAYID-LWJ2SII4AJ685050C705974J","intent":"sale","state":"created","cart":"76V38303RE9333627","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"daniela@gmail.com","first_name":"Daniela","last_name":"Ballesteros","payer_id":"MX5Q9NRFDTUJ6","shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"244.00","currency":"USD"},"payee":{"merchant_id":"QRXN4HS77YL92","email":"PPX.DevNet-facilitator@gmail.com"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","quantity":1}],"shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[]}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute?paymentId=PAYID-LWJ2SII4AJ685050C705974J","cancel_url":"http://localhost:3000/"},"create_time":"2019-10-01T19:29:37Z","update_time":"2019-10-01T19:29:59Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J/execute","rel":"execute","method":"POST"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-76V38303RE9333627","rel":"approval_url","method":"REDIRECT"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 19:29:59 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["b1d86a17bbc02", "b1d86a17bbc02"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D933860189%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 19:59:59 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["1750"], "connection"=>["close"], "content-type"=>["application/json"]}
+PayPal-Request-Id: 37b77739-3098-46c9-87ad-2eda2f5e1b7f
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J/execute
+Request.body={"payer_id":"MX5Q9NRFDTUJ6"}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAHspTgftsQ-F0dhluI0B34p5GMJKdf85ZR2FEQr7Ki2LEP9il93Q_PT7xcY0HXnJ4XG2g_hCfh5MOSOJCE74bpIR4j4_Q", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"37b77739-3098-46c9-87ad-2eda2f5e1b7f"}
+Response[200]: OK, Duration: 2.358s
+Response.body={"id":"PAYID-LWJ2SII4AJ685050C705974J","intent":"sale","state":"approved","cart":"76V38303RE9333627","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"daniela@gmail.com","first_name":"Daniela","last_name":"Ballesteros","payer_id":"MX5Q9NRFDTUJ6","shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"244.00","currency":"USD","details":{"subtotal":"244.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payee":{"merchant_id":"QRXN4HS77YL92","email":"PPX.DevNet-facilitator@gmail.com"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"1","price":"90.00","currency":"USD","tax":"0.00","quantity":1},{"name":"Mediocre Plastic Plate","sku":"2","price":"55.00","currency":"USD","tax":"0.00","quantity":1},{"name":"Mediocre Wooden Bag","sku":"3","price":"99.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"39M22030WM071013J","state":"completed","amount":{"total":"244.00","currency":"USD","details":{"subtotal":"244.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"7.38","currency":"USD"},"parent_payment":"PAYID-LWJ2SII4AJ685050C705974J","create_time":"2019-10-01T19:30:01Z","update_time":"2019-10-01T19:30:01Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/39M22030WM071013J","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/39M22030WM071013J/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J","rel":"parent_payment","method":"GET"}]}}]}],"create_time":"2019-10-01T19:29:37Z","update_time":"2019-10-01T19:30:01Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWJ2SII4AJ685050C705974J","rel":"self","method":"GET"}]}	Response.header={"date"=>["Tue, 01 Oct 2019 19:30:00 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["31a0d118b4f5f", "31a0d118b4f5f"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D950637405%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Tue, 01 Oct 2019 20:00:02 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["2391"], "connection"=>["close"], "content-type"=>["application/json"]}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "billings" ("code", "payment_method", "amount", "currency", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", "PAYID-LWJ2SII4AJ685050C705974J"], ["payment_method", "paypal"], ["amount", "244.0"], ["currency", "USD"], ["user_id", 1], ["created_at", "2019-10-01 19:30:01.597111"], ["updated_at", "2019-10-01 19:30:01.597111"]]
+  [1m[35m (15.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (9.2ms)[0m  [1m[33mUPDATE "orders" SET "payed" = 't', "billing_id" = 1 WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 1], ["payed", "f"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 3334ms (ActiveRecord: 32.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-01 16:30:01 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 40ms (Views: 36.2ms | ActiveRecord: 1.3ms)
+
+
