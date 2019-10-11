@@ -1328,3 +1328,739 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 40ms (Views: 36.2ms | ActiveRecord: 1.3ms)
 
 
+Started GET "/" for 127.0.0.1 at 2019-10-06 18:03:54 -0300
+  [1m[35m (37.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (89.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (191.6ms)
+Completed 200 OK in 1554ms (Views: 1371.7ms | ActiveRecord: 114.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-10-06 18:05:35 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__2344945642989010465_70354014676080 at /home/daniela/Escritorio/desafio-latam/Semana9/e-comerce/app/views/devise/registrations/new.html.erb:4)
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (919.2ms)
+Completed 200 OK in 1027ms (Views: 993.0ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-10-06 18:06:04 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cc7j12dzPfEwS3Kglta4TDhD+hCmqa/3RIImYJYVV0H89ZejnFq+elhNQGh38UeMB0PlFZ68EjarhenHGoltTA==", "user"=>{"name"=>"Daniela", "email"=>"daniela@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (48.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "daniela@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (22.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "daniela@gmail.com"], ["encrypted_password", "$2a$11$tzRH6GWxgF0SwxtUbzwJKeFleQPwLA6zyDixbJEQkhccW7NrUyiie"], ["name", "Daniela"], ["created_at", "2019-10-06 21:06:04.942438"], ["updated_at", "2019-10-06 21:06:04.942438"]]
+  [1m[35m (26.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (27.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2019-10-06 21:06:04.998136"], ["last_sign_in_at", "2019-10-06 21:06:04.998136"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2019-10-06 21:06:04.999244"], ["id", 2]]
+  [1m[35m (20.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 570ms (ActiveRecord: 146.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-06 18:06:05 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (9.9ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 64ms (Views: 60.6ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/products/1/orders" for 127.0.0.1 at 2019-10-06 18:06:10 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"1eGPq+4dOVU5t3QgB/tfhh44dCJIxWHq3MJo4Nfhu6XSUxu3ChA+fxzTJ/zX2wraP8hIyV6617Vpczqa+zkJ5g==", "product_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (38.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 1 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 90], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (14.5ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "product_id", "created_at", "updated_at", "price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["product_id", 1], ["created_at", "2019-10-06 21:06:10.412369"], ["updated_at", "2019-10-06 21:06:10.412369"], ["price", 90]]
+  [1m[35m (24.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "quantity" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", "2019-10-06 21:06:10.454517"], ["quantity", 1], ["id", 4]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 314ms (ActiveRecord: 92.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-06 18:06:10 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (6.8ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 35.6ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/products/2/orders" for 127.0.0.1 at 2019-10-06 18:06:12 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"zTQxrH+cvR4l/O6mlZTYLwBxm1vw9LbumANuA/YCH+bKhqWwm5G6NACYvXpFtI1zIYGnsOaLALEtsjx52tqtpQ==", "product_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 2 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 55], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "product_id", "created_at", "updated_at", "price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["product_id", 2], ["created_at", "2019-10-06 21:06:12.506245"], ["updated_at", "2019-10-06 21:06:12.506245"], ["price", 55]]
+  [1m[35m (133.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "quantity" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", "2019-10-06 21:06:12.644398"], ["quantity", 1], ["id", 5]]
+  [1m[35m (43.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 192ms (ActiveRecord: 180.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-06 18:06:12 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 27.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-06 18:06:14 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 223ms (Views: 32.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-07 11:11:57 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (19.5ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 367ms (Views: 336.2ms | ActiveRecord: 11.0ms)
+
+
+Started POST "/products/1/orders" for 127.0.0.1 at 2019-10-07 11:12:01 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"NWOYzO/K5PdKOsXtvqXneKj7bB9SCIUYCp2GDycZZQEy0QzQC8fj3W9eljFuhbIkiQtQ9ER3M0e/LNR1C8HXQg==", "product_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 1 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 90], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "orders" SET "quantity" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["quantity", 2], ["updated_at", "2019-10-07 14:12:01.866185"], ["id", 4]]
+  [1m[35m (165.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 223ms (ActiveRecord: 175.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-07 11:12:02 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (6.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 37ms (Views: 34.1ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/products/2/orders" for 127.0.0.1 at 2019-10-07 11:12:03 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"WkgCAtZal0dPt41YQDHlepuzFD1LokX7Y00y3innuyFd+pYeMleQbWrT3oSQEbAmukMo1l3d86TW/GCkBT8JYg==", "product_id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 2 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 55], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "orders" SET "quantity" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["quantity", 2], ["updated_at", "2019-10-07 14:12:03.392042"], ["id", 5]]
+  [1m[35m (122.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 137ms (ActiveRecord: 125.7ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-07 11:12:03 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (4.9ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 31ms (Views: 28.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/products/3/orders" for 127.0.0.1 at 2019-10-07 11:12:04 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"MkmZ5MgIIF2e+zg0hrXnAUqWtDf3kpIRq3Xw5twfL781+w34LAUnd7ufa+hWlbJda2aI3OHtJE4exKKc8Med/A==", "product_id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 3 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 99], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "product_id", "created_at", "updated_at", "price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["product_id", 3], ["created_at", "2019-10-07 14:12:04.646229"], ["updated_at", "2019-10-07 14:12:04.646229"], ["price", 99]]
+  [1m[35m (120.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "quantity" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", "2019-10-07 14:12:04.771931"], ["quantity", 1], ["id", 6]]
+  [1m[35m (48.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 190ms (ActiveRecord: 173.7ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-07 11:12:04 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 40ms (Views: 37.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-07 11:12:05 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 51ms (Views: 34.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:12:07 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 4f0a724a-19a2-429e-a786-c3421e221f30
+Request[post]: https://api.sandbox.paypal.com/v1/oauth2/token
+Request.body=grant_type=client_credentials	request.header={"User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "Content-Type"=>"application/x-www-form-urlencoded", "Authorization"=>"Basic QWNWRFUyQXdIMDhiWURtQWVUeXFGMGJoMnphSFdnUU1ES05NZXFmT0lqUDE0cFoxV29Ob3lsdnRCblhGZkMwZXZfVGtOVzQ1R1otVkQ5ZDpFUFN4MmFWcVlXNXNXdTR6S09tbDViNzRjXzFKTjV3SXhrclpuaHJ5T0dNeENYdERzcUIwSDllZExXOEk5M3RWZm9qbFhuSkZaS2FvUlktTQ==", "PayPal-Request-Id"=>"4f0a724a-19a2-429e-a786-c3421e221f30"}
+Response[401]: Unauthorized, Duration: 1.016s
+Response.body={"error":"invalid_client","error_description":"Client Authentication failed"}	Response.header={"date"=>["Mon, 07 Oct 2019 14:12:09 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["523ac7c0550c6", "523ac7c0550c6"], "x-paypal-token-service"=>["IAAS"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D3108477789%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 14:42:09 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["77"], "connection"=>["close"], "content-type"=>["application/json"]}
+Completed 500 Internal Server Error in 1088ms (ActiveRecord: 2.1ms)
+
+
+  
+PayPal::SDK::Core::Exceptions::UnauthorizedAccess (Failed.  Response code = 401.  Response message = Unauthorized.  Response debug ID = 523ac7c0550c6, 523ac7c0550c6.):
+  
+app/controllers/billings_controller.rb:29:in `pre_pay'
+Started GET "/orders" for 127.0.0.1 at 2019-10-07 11:18:46 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 39ms (Views: 30.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:18:48 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 29b03d31-6396-4519-bd49-098b5f66ce42
+Request[post]: https://api.sandbox.paypal.com/v1/oauth2/token
+Request.body=grant_type=client_credentials	request.header={"User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "Content-Type"=>"application/x-www-form-urlencoded", "Authorization"=>"Basic QWNWRFUyQXdIMDhiWURtQWVUeXFGMGJoMnphSFdnUU1ES05NZXFmT0lqUDE0cFoxV29Ob3lsdnRCblhGZkMwZXZfVGtOVzQ1R1otVkQ5ZDpFUFN4MmFWcVlXNXNXdTR6S09tbDViNzRjXzFKTjV3SXhrclpuaHJ5T0dNeENYdERzcUIwSDllZExXOEk5M3RWZm9qbFhuSkZaS2FvUlktTQ==", "PayPal-Request-Id"=>"29b03d31-6396-4519-bd49-098b5f66ce42"}
+Response[401]: Unauthorized, Duration: 0.777s
+Response.body={"error":"invalid_client","error_description":"Client Authentication failed"}	Response.header={"date"=>["Mon, 07 Oct 2019 14:18:49 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["cf645ccde2649", "cf645ccde2649"], "x-paypal-token-service"=>["IAAS"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1229560669%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 14:48:50 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["77"], "connection"=>["close"], "content-type"=>["application/json"]}
+Completed 500 Internal Server Error in 797ms (ActiveRecord: 4.1ms)
+
+
+  
+PayPal::SDK::Core::Exceptions::UnauthorizedAccess (Failed.  Response code = 401.  Response message = Unauthorized.  Response debug ID = cf645ccde2649, cf645ccde2649.):
+  
+app/controllers/billings_controller.rb:29:in `pre_pay'
+Started GET "/" for 127.0.0.1 at 2019-10-07 11:28:34 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (24.1ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 368ms (Views: 337.8ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-07 11:28:37 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (31.4ms)
+Completed 200 OK in 90ms (Views: 50.7ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:28:39 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 092630c7-20d2-4745-bcbe-b1ff68d66ef2
+Request[post]: https://api.sandbox.paypal.com/v1/oauth2/token
+Request.body=grant_type=client_credentials	request.header={"User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "Content-Type"=>"application/x-www-form-urlencoded", "Authorization"=>"Basic QWNWRFUyQXdIMDhiWURtQWVUeXFGMGJoMnphSFdnUU1ES05NZXFmT0lqUDE0cFoxV29Ob3lsdnRCblhGZkMwZXZfVGtOVzQ1R1otVkQ5ZDpFUFN4MmFWcVlXNXNXdTR6S09tbDViNzRjXzFKTjV3SXhrclpuaHJ5T0dNeENYdERzcUIwSDllZExXOEk5M3RWZm9qbFhuSkZaS2FvUlktTQ==", "PayPal-Request-Id"=>"092630c7-20d2-4745-bcbe-b1ff68d66ef2"}
+Response[401]: Unauthorized, Duration: 0.944s
+Response.body={"error":"invalid_client","error_description":"Client Authentication failed"}	Response.header={"date"=>["Mon, 07 Oct 2019 14:28:39 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["6139aca5edbf8", "6139aca5edbf8"], "x-paypal-token-service"=>["IAAS"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D2538314589%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 14:58:40 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["77"], "connection"=>["close"], "content-type"=>["application/json"]}
+Completed 500 Internal Server Error in 975ms (ActiveRecord: 2.8ms)
+
+
+  
+PayPal::SDK::Core::Exceptions::UnauthorizedAccess (Failed.  Response code = 401.  Response message = Unauthorized.  Response debug ID = 6139aca5edbf8, 6139aca5edbf8.):
+  
+app/controllers/billings_controller.rb:29:in `pre_pay'
+Started GET "/orders" for 127.0.0.1 at 2019-10-07 11:34:17 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (44.6ms)
+Completed 200 OK in 111ms (Views: 60.9ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:34:24 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:40:16 -0300
+Completed 500 Internal Server Error in 352274ms (ActiveRecord: 3.2ms)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `pre_pay'
+app/controllers/billings_controller.rb:31:in `pre_pay'
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (2.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (2.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (2.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (2.8ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 12df4b13-c272-4ad3-b7ef-ac8b9bdb14ee
+Request[post]: https://api.sandbox.paypal.com/v1/oauth2/token
+Request.body=grant_type=client_credentials	request.header={"User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "Content-Type"=>"application/x-www-form-urlencoded", "Authorization"=>"Basic QWNWRFUyQXdIMDhiWURtQWVUeXFGMGJoMnphSFdnUU1ES05NZXFmT0lqUDE0cFoxV29Ob3lsdnRCblhGZkMwZXZfVGtOVzQ1R1otVkQ5ZDpFUFN4MmFWcVlXNXNXdTR6S09tbDViNzRjXzFKTjV3SXhrclpuaHJ5T0dNeENYdERzcUIwSDllZExXOEk5M3RWZm9qbFhuSkZaS2FvUlktTQ==", "PayPal-Request-Id"=>"12df4b13-c272-4ad3-b7ef-ac8b9bdb14ee"}
+Response[401]: Unauthorized, Duration: 1.054s
+Response.body={"error":"invalid_client","error_description":"Client Authentication failed"}	Response.header={"date"=>["Mon, 07 Oct 2019 14:40:23 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["49d0d41c5a934", "49d0d41c5a934"], "x-paypal-token-service"=>["IAAS"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1464769373%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 15:10:23 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["77"], "connection"=>["close"], "content-type"=>["application/json"]}
+Completed 500 Internal Server Error in 5727ms (ActiveRecord: 37.4ms)
+
+
+  
+PayPal::SDK::Core::Exceptions::UnauthorizedAccess (Failed.  Response code = 401.  Response message = Unauthorized.  Response debug ID = 49d0d41c5a934, 49d0d41c5a934.):
+  
+app/controllers/billings_controller.rb:31:in `pre_pay'
+Started GET "/orders" for 127.0.0.1 at 2019-10-07 11:47:53 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (58.8ms)
+Completed 200 OK in 434ms (Views: 354.1ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:48:01 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2019-10-07 11:48:51 -0300
+Completed 500 Internal Server Error in 51879ms (ActiveRecord: 3.9ms)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `pre_pay'
+app/controllers/billings_controller.rb:31:in `pre_pay'
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (146.8ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 670ms (Views: 642.9ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/products/1/orders" for 127.0.0.1 at 2019-10-07 11:48:58 -0300
+Started POST "/products/2/orders" for 127.0.0.1 at 2019-10-07 11:49:00 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"dYWx8JIT6zvGQR4J869nN2q5QNRfw/bpBUnG1QJF6zRyNyXsdh7sEeMlTdUjjzJrS0l8P0m8QLaw+JSvLp1Zdw==", "product_id"=>"1"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (2.9ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (2.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 1 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 90], ["LIMIT", 1]]
+  [1m[35m (12.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (14.1ms)[0m  [1m[33mUPDATE "orders" SET "quantity" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["quantity", 3], ["updated_at", "2019-10-07 14:49:01.936257"], ["id", 4]]
+  [1m[35m (55.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 1405ms (ActiveRecord: 131.5ms)
+
+
+Started POST "/products/3/orders" for 127.0.0.1 at 2019-10-07 11:49:03 -0300
+Started GET "/orders" for 127.0.0.1 at 2019-10-07 11:49:03 -0300
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"dYWx8JIT6zvGQR4J869nN2q5QNRfw/bpBUnG1QJF6zRyNyXsdh7sEeMlTdUjjzJrS0l8P0m8QLaw+JSvLp1Zdw==", "product_id"=>"3"}
+Processing by OrdersController#index as HTML
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"dYWx8JIT6zvGQR4J869nN2q5QNRfw/bpBUnG1QJF6zRyNyXsdh7sEeMlTdUjjzJrS0l8P0m8QLaw+JSvLp1Zdw==", "product_id"=>"2"}
+  [1m[36mUser Load (33.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (31.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (31.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (88.7ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (13.8ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (36.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (73.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 2 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 55], ["LIMIT", 1]]
+  [1m[36mOrder Load (26.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = 2 AND "orders"."product_id" = 3 AND "orders"."payed" = $1 AND "orders"."price" = $2 LIMIT $3[0m  [["payed", "f"], ["price", 99], ["LIMIT", 1]]
+  [1m[35m (89.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Load (3.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (185.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Load (49.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (49.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (13.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (2.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (11.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (860.4ms)
+  [1m[36mProduct Load (24.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (36.4ms)[0m  [1m[33mUPDATE "orders" SET "quantity" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["quantity", 3], ["updated_at", "2019-10-07 14:49:06.063784"], ["id", 5]]
+  [1m[35mSQL (19.1ms)[0m  [1m[33mUPDATE "orders" SET "quantity" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["quantity", 2], ["updated_at", "2019-10-07 14:49:06.144787"], ["id", 6]]
+  [1m[35m (92.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/products
+  [1m[35m (93.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 302 Found in 2476ms (ActiveRecord: 897.5ms)
+
+
+Redirected to http://localhost:3000/products
+Completed 302 Found in 2639ms (ActiveRecord: 684.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2019-10-07 11:49:06 -0300
+Completed 200 OK in 3167ms (Views: 1741.1ms | ActiveRecord: 346.7ms)
+
+
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (186.3ms)
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 924ms (Views: 890.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-07 11:49:10 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (1.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (231.8ms)
+Completed 200 OK in 981ms (Views: 845.6ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:49:13 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (1.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 605bc921-fbf7-4948-9a1f-57ba03111314
+Request[post]: https://api.sandbox.paypal.com/v1/oauth2/token
+Request.body=grant_type=client_credentials	request.header={"User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "Content-Type"=>"application/x-www-form-urlencoded", "Authorization"=>"Basic QWNWRFUyQXdIMDhiWURtQWVUeXFGMGJoMnphSFdnUU1ES05NZXFmT0lqUDE0cFoxV29Ob3lsdnRCblhGZkMwZXZfVGtOVzQ1R1otVkQ5ZGk6RVBTeDJhVnFZVzVzV3U0ektPbWw1Yjc0Y18xSk41d0l4a3JabmhyeU9HTXhDWHREc3FCMEg5ZWRMVzhJOTN0VmZvamxYbkpGWkthb1JZLU0=", "PayPal-Request-Id"=>"605bc921-fbf7-4948-9a1f-57ba03111314"}
+Response[200]: OK, Duration: 1.094s
+Response.body={"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAE2aCAbt8idYonN4trgpSwK1GhZtIvP28kz0czLm_WH_OcHykjPS-Pnh691KsE2eOZVGMY8W_LtIg6BrEnJa5TBQ46Bqg","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":32400,"nonce":"2019-10-07T14:49:14ZEkpkT6CocMJ14fx0pIAcX-XWkZFaKGUmu9aeJ7DxQoQ"}	Response.header={"date"=>["Mon, 07 Oct 2019 14:49:14 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["7d56b29777206", "7d56b29777206"], "x-paypal-token-service"=>["IAAS"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1783667549%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 15:19:14 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["918"], "connection"=>["close"], "content-type"=>["application/json"]}
+PayPal-Request-Id: 605bc921-fbf7-4948-9a1f-57ba03111314
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment
+Request.body={"intent":"sale","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"currency":"USD","total":"633"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"sku":"4","name":"Aerodynamic Aluminum Wallet","quantity":"3","price":"90","currency":"USD"},{"sku":"5","name":"Mediocre Plastic Plate","quantity":"3","price":"55","currency":"USD"},{"sku":"6","name":"Mediocre Wooden Bag","quantity":"2","price":"99","currency":"USD"}]}}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute","cancel_url":"http://localhost:3000/"}}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAE2aCAbt8idYonN4trgpSwK1GhZtIvP28kz0czLm_WH_OcHykjPS-Pnh691KsE2eOZVGMY8W_LtIg6BrEnJa5TBQ46Bqg", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"605bc921-fbf7-4948-9a1f-57ba03111314"}
+Response[201]: Created, Duration: 1.498s
+Response.body={"id":"PAYID-LWNVA3A3N3941301S478812S","intent":"sale","state":"created","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"total":"633.00","currency":"USD"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"4","price":"90.00","currency":"USD","quantity":3},{"name":"Mediocre Plastic Plate","sku":"5","price":"55.00","currency":"USD","quantity":3},{"name":"Mediocre Wooden Bag","sku":"6","price":"99.00","currency":"USD","quantity":2}]},"related_resources":[]}],"create_time":"2019-10-07T14:49:15Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA3A3N3941301S478812S","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-0VA08182MS738893X","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA3A3N3941301S478812S/execute","rel":"execute","method":"POST"}]}	Response.header={"date"=>["Mon, 07 Oct 2019 14:49:15 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["c7c1af6598256", "c7c1af6598256"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1800444765%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 15:19:16 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["987"], "connection"=>["close"], "content-type"=>["application/json"]}
+Redirected to https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-0VA08182MS738893X
+Completed 302 Found in 3069ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:49:19 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (1.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (2.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 5abc2632-b44a-48e1-9870-835f9e97cf10
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment
+Request.body={"intent":"sale","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"currency":"USD","total":"633"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"sku":"4","name":"Aerodynamic Aluminum Wallet","quantity":"3","price":"90","currency":"USD"},{"sku":"5","name":"Mediocre Plastic Plate","quantity":"3","price":"55","currency":"USD"},{"sku":"6","name":"Mediocre Wooden Bag","quantity":"2","price":"99","currency":"USD"}]}}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute","cancel_url":"http://localhost:3000/"}}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAE2aCAbt8idYonN4trgpSwK1GhZtIvP28kz0czLm_WH_OcHykjPS-Pnh691KsE2eOZVGMY8W_LtIg6BrEnJa5TBQ46Bqg", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"5abc2632-b44a-48e1-9870-835f9e97cf10"}
+Response[201]: Created, Duration: 1.523s
+Response.body={"id":"PAYID-LWNVA4I03G5192603825345J","intent":"sale","state":"created","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"total":"633.00","currency":"USD"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"4","price":"90.00","currency":"USD","quantity":3},{"name":"Mediocre Plastic Plate","sku":"5","price":"55.00","currency":"USD","quantity":3},{"name":"Mediocre Wooden Bag","sku":"6","price":"99.00","currency":"USD","quantity":2}]},"related_resources":[]}],"create_time":"2019-10-07T14:49:20Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8R251939R84934522","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J/execute","rel":"execute","method":"POST"}]}	Response.header={"date"=>["Mon, 07 Oct 2019 14:49:20 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["cb374ddea4e8c", "cb374ddea4e8c"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1884330845%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 15:19:21 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["987"], "connection"=>["close"], "content-type"=>["application/json"]}
+Redirected to https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8R251939R84934522
+Completed 302 Found in 1949ms (ActiveRecord: 11.5ms)
+
+
+Started GET "/billings/pre_pay" for 127.0.0.1 at 2019-10-07 11:49:24 -0300
+Processing by BillingsController#pre_pay as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (10.2ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mOrder Load (1.9ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProduct Load (13.7ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+PayPal-Request-Id: 7effd6da-dda7-410a-94f6-1a3ae992c624
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment
+Request.body={"intent":"sale","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"currency":"USD","total":"633"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"sku":"4","name":"Aerodynamic Aluminum Wallet","quantity":"3","price":"90","currency":"USD"},{"sku":"5","name":"Mediocre Plastic Plate","quantity":"3","price":"55","currency":"USD"},{"sku":"6","name":"Mediocre Wooden Bag","quantity":"2","price":"99","currency":"USD"}]}}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute","cancel_url":"http://localhost:3000/"}}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAE2aCAbt8idYonN4trgpSwK1GhZtIvP28kz0czLm_WH_OcHykjPS-Pnh691KsE2eOZVGMY8W_LtIg6BrEnJa5TBQ46Bqg", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"7effd6da-dda7-410a-94f6-1a3ae992c624"}
+Response[201]: Created, Duration: 1.391s
+Response.body={"id":"PAYID-LWNVA5I7E3602196J3074144","intent":"sale","state":"created","payer":{"payment_method":"paypal"},"transactions":[{"amount":{"total":"633.00","currency":"USD"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"4","price":"90.00","currency":"USD","quantity":3},{"name":"Mediocre Plastic Plate","sku":"5","price":"55.00","currency":"USD","quantity":3},{"name":"Mediocre Wooden Bag","sku":"6","price":"99.00","currency":"USD","quantity":2}]},"related_resources":[]}],"create_time":"2019-10-07T14:49:25Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA5I7E3602196J3074144","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-1AL82224T55650949","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA5I7E3602196J3074144/execute","rel":"execute","method":"POST"}]}	Response.header={"date"=>["Mon, 07 Oct 2019 14:49:25 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["530bd31124dee", "530bd31124dee"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1968216925%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 15:19:25 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["987"], "connection"=>["close"], "content-type"=>["application/json"]}
+Redirected to https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-1AL82224T55650949
+Completed 302 Found in 1839ms (ActiveRecord: 30.6ms)
+
+
+Started GET "/billings/execute?paymentId=PAYID-LWNVA4I03G5192603825345J&token=EC-8R251939R84934522&PayerID=MX5Q9NRFDTUJ6" for 127.0.0.1 at 2019-10-07 11:53:29 -0300
+Processing by BillingsController#execute as HTML
+  Parameters: {"paymentId"=>"PAYID-LWNVA4I03G5192603825345J", "token"=>"EC-8R251939R84934522", "PayerID"=>"MX5Q9NRFDTUJ6"}
+Request[get]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J
+Request.body=null	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAE2aCAbt8idYonN4trgpSwK1GhZtIvP28kz0czLm_WH_OcHykjPS-Pnh691KsE2eOZVGMY8W_LtIg6BrEnJa5TBQ46Bqg", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)"}
+Response[200]: OK, Duration: 0.975s
+Response.body={"id":"PAYID-LWNVA4I03G5192603825345J","intent":"sale","state":"created","cart":"8R251939R84934522","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"daniela@gmail.com","first_name":"Daniela","last_name":"Ballesteros","payer_id":"MX5Q9NRFDTUJ6","shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"633.00","currency":"USD"},"payee":{"merchant_id":"SBJMNE4M4ZWMY","email":"daniela@kikiapp.com"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"4","price":"90.00","currency":"USD","quantity":3},{"name":"Mediocre Plastic Plate","sku":"5","price":"55.00","currency":"USD","quantity":3},{"name":"Mediocre Wooden Bag","sku":"6","price":"99.00","currency":"USD","quantity":2}],"shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[]}],"redirect_urls":{"return_url":"http://localhost:3000/billings/execute?paymentId=PAYID-LWNVA4I03G5192603825345J","cancel_url":"http://localhost:3000/"},"create_time":"2019-10-07T14:49:20Z","update_time":"2019-10-07T14:53:30Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J/execute","rel":"execute","method":"POST"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8R251939R84934522","rel":"approval_url","method":"REDIRECT"}]}	Response.header={"date"=>["Mon, 07 Oct 2019 14:53:29 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["3a771d81e21e1", "3a771d81e21e1"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1766955869%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 15:23:30 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["1737"], "connection"=>["close"], "content-type"=>["application/json"]}
+PayPal-Request-Id: 59c62b8c-4c5b-4fb0-810f-500af2777666
+Request[post]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J/execute
+Request.body={"payer_id":"MX5Q9NRFDTUJ6"}	request.header={"X-PAYPAL-SANDBOX-EMAIL-ADDRESS"=>"Platform.sdk.seller@gmail.com", "Authorization"=>"Bearer A21AAE2aCAbt8idYonN4trgpSwK1GhZtIvP28kz0czLm_WH_OcHykjPS-Pnh691KsE2eOZVGMY8W_LtIg6BrEnJa5TBQ46Bqg", "Content-Type"=>"application/json", "User-Agent"=>"PayPalSDK/PayPal-Ruby-SDK 1.7.3 (paypal-sdk-core 1.7.3; ruby 2.6.3p62-x86_64-linux;OpenSSL 1.0.2g  1 Mar 2016)", "PayPal-Request-Id"=>"59c62b8c-4c5b-4fb0-810f-500af2777666"}
+Response[200]: OK, Duration: 2.303s
+Response.body={"id":"PAYID-LWNVA4I03G5192603825345J","intent":"sale","state":"approved","cart":"8R251939R84934522","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"daniela@gmail.com","first_name":"Daniela","last_name":"Ballesteros","payer_id":"MX5Q9NRFDTUJ6","shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"633.00","currency":"USD","details":{"subtotal":"633.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payee":{"merchant_id":"SBJMNE4M4ZWMY","email":"daniela@kikiapp.com"},"description":"Compra desde E-commerce Rails.","item_list":{"items":[{"name":"Aerodynamic Aluminum Wallet","sku":"4","price":"90.00","currency":"USD","tax":"0.00","quantity":3},{"name":"Mediocre Plastic Plate","sku":"5","price":"55.00","currency":"USD","tax":"0.00","quantity":3},{"name":"Mediocre Wooden Bag","sku":"6","price":"99.00","currency":"USD","tax":"0.00","quantity":2}],"shipping_address":{"recipient_name":"Daniela Ballesteros","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"00R04446G38608812","state":"completed","amount":{"total":"633.00","currency":"USD","details":{"subtotal":"633.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"18.66","currency":"USD"},"parent_payment":"PAYID-LWNVA4I03G5192603825345J","create_time":"2019-10-07T14:53:31Z","update_time":"2019-10-07T14:53:31Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/00R04446G38608812","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/00R04446G38608812/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J","rel":"parent_payment","method":"GET"}]}}]}],"create_time":"2019-10-07T14:49:20Z","update_time":"2019-10-07T14:53:31Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LWNVA4I03G5192603825345J","rel":"self","method":"GET"}]}	Response.header={"date"=>["Mon, 07 Oct 2019 14:53:30 GMT"], "server"=>["Apache"], "paypal-debug-id"=>["457b9af0ee27c", "457b9af0ee27c"], "content-language"=>["*"], "http_x_pp_az_locator"=>["sandbox.slc"], "set-cookie"=>["X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1783733085%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Mon, 07 Oct 2019 15:23:32 GMT; domain=.paypal.com; path=/; Secure; HttpOnly", "X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT"], "vary"=>["Authorization"], "content-length"=>["2379"], "connection"=>["close"], "content-type"=>["application/json"]}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (73.4ms)[0m  [1m[32mINSERT INTO "billings" ("code", "payment_method", "amount", "currency", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", "PAYID-LWNVA4I03G5192603825345J"], ["payment_method", "paypal"], ["amount", "633.0"], ["currency", "USD"], ["user_id", 2], ["created_at", "2019-10-07 14:53:32.946501"], ["updated_at", "2019-10-07 14:53:32.946501"]]
+  [1m[35m (30.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (5.3ms)[0m  [1m[33mUPDATE "orders" SET "payed" = 't', "billing_id" = 2 WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 2], ["payed", "f"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4011ms (ActiveRecord: 121.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-07 11:53:33 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (11.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (180.3ms)
+  [1m[36mUser Load (10.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 966ms (Views: 919.9ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-07 11:57:43 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (21.1ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 362ms (Views: 333.7ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-07 12:04:27 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (23.6ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 419ms (Views: 388.6ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-07 12:05:55 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (5.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 44ms (Views: 41.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-11 14:46:47 -0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 1354ms (Views: 1296.1ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-10-11 14:49:16 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (1366.0ms)
+Completed 200 OK in 1496ms (Views: 1461.6ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-10-11 14:49:25 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb___3448958981295612923_70021458941960 at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/devise/registrations/new.html.erb:4)
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 107ms (Views: 105.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-10-11 14:49:30 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 49ms (Views: 45.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-11 14:49:34 -0300
+Processing by OrdersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-10-11 14:49:34 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-11 14:49:35 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 62ms (Views: 57.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-11 15:10:27 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 36ms (Views: 33.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-11 15:11:21 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 32ms (Views: 29.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2019-10-11 15:42:45 -0300
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/tweets"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-10-11 15:42:48 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (40.1ms)
+Completed 200 OK in 367ms (Views: 346.9ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-11 15:46:33 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 66ms (Views: 63.1ms | ActiveRecord: 1.1ms)
+
+

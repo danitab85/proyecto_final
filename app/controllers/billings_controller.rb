@@ -26,6 +26,8 @@ class BillingsController < ApplicationController
             description: "Compra desde E-commerce Rails."}]
       })
 
+    
+
     if payment.create
       redirect_url = payment.links.find{|v| v.method == "REDIRECT"}.href
       redirect_to redirect_url
