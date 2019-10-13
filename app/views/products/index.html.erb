@@ -1,3 +1,6 @@
+<%= link_to 'New Curso', new_product_path, class: "btn btn-success btn-block mt-5" %>
+
+
 <div class="container">
   <div class="row">
     <% @products.each_slice(4) do |row| %>
@@ -16,4 +19,7 @@
       <div class="w-100" style="margin-top:20px;"> </div>
     <% end %>
   </div>
+</div>
+<div class="col-md-6">
+    <%= link_to 'New Curso', new_product_path, class: "btn btn-success btn-block mt-5" %>
 </div>
