@@ -6,12 +6,12 @@ class ProductsController < ApplicationController
   def show
   end
 
-  
+
 
 
 private
   def product_params
-      params.require(:product).permit(:content, :title, :photo)
+      params.require(:product).permit(:content, :title, :photo, :description)
   end
 
 end
