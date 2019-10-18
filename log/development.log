@@ -4175,3 +4175,600 @@ puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
 puma (3.12.1) lib/puma/server.rb:474:in `process_client'
 puma (3.12.1) lib/puma/server.rb:334:in `block in run'
 puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-10-18 15:16:53 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (28.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 708ms (Views: 687.5ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:16:58 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"9QGeUckmzdvgoW+gozUKwHf65rGPVob0+Xtcle8EDITYvkNdN5nZU3hOJ/WyZzSHSMO4Q7NLN4Xdcr/G8y0jtQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 265ms (Views: 260.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:18:17 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"9QGeUckmzdvgoW+gozUKwHf65rGPVob0+Xtcle8EDITYvkNdN5nZU3hOJ/WyZzSHSMO4Q7NLN4Xdcr/G8y0jtQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 234ms (Views: 230.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-18 15:22:33 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "price * quantity". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from index at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/controllers/orders_controller.rb:24)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 748ms (Views: 676.0ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-18 15:23:40 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "price * quantity". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from index at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/controllers/orders_controller.rb:24)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 205ms (Views: 193.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-18 15:24:06 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "price * quantity". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from index at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/controllers/orders_controller.rb:24)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 179ms (Views: 168.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-18 15:27:06 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "price * quantity". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from index at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/controllers/orders_controller.rb:24)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 167ms (Views: 157.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-18 15:27:25 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "price * quantity". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from index at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/controllers/orders_controller.rb:24)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 179ms (Views: 170.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-18 15:29:05 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "price * quantity". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from index at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/controllers/orders_controller.rb:24)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 190ms (Views: 182.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/orders" for 127.0.0.1 at 2019-10-18 15:29:19 -0300
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "price * quantity". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from index at /home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/controllers/orders_controller.rb:24)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT price * quantity FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  Rendering orders/index.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."payed" = $2[0m  [["user_id", 3], ["payed", false]]
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendered orders/index.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 182ms (Views: 171.0ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-18 15:47:24 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (8.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 168ms (Views: 162.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:47:28 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `photo' for nil:NilClass):
+    4:       <div class="row justify-content-md-center">
+    5:         <div class="col-md-9"
+    6:           <p>
+    7:             <%= image_tag@product.photo %>
+    8:           </p>
+    9: 
+   10:           <p>
+  
+app/views/products/show.html.erb:7:in `_app_views_products_show_html_erb___962955380367593866_59539460'
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:47:41 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `photo' for nil:NilClass):
+    4:       <div class="row justify-content-md-center">
+    5:         <div class="col-md-9"
+    6:           <p>
+    7:             <%= image_tag @product.photo %>
+    8:           </p>
+    9: 
+   10:           <p>
+  
+app/views/products/show.html.erb:7:in `_app_views_products_show_html_erb___962955380367593866_70095636816060'
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:50:17 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (610.3ms)
+Completed 500 Internal Server Error in 620ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `product' for #<#<Class:0x0000000005844978>:0x00000000057f0e40>
+Did you mean?  product_url):
+    4:       <div class="row justify-content-md-center">
+    5:         <div class="col-md-9"
+    6:           <p>
+    7:             <%= image_tag product.photo %>
+    8:           </p>
+    9: 
+   10:           <p>
+  
+app/views/products/show.html.erb:7:in `_app_views_products_show_html_erb___962955380367593866_46460600'
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:57:43 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (729.7ms)
+Completed 500 Internal Server Error in 740ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `product' for #<#<Class:0x00007f80d2ef2b58>:0x00007f80d2ef1168>
+Did you mean?  product_url):
+    4:       <div class="row justify-content-md-center">
+    5:         <div class="col-md-9"
+    6:           <p>
+    7:             <%= image_tag product.photo %>
+    8:           </p>
+    9: 
+   10:           <p>
+  
+app/views/products/show.html.erb:7:in `_app_views_products_show_html_erb___962955380367593866_70095635716520'
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:58:05 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `photo' for nil:NilClass):
+    4:       <div class="row justify-content-md-center">
+    5:         <div class="col-md-9"
+    6:           <p>
+    7:             <%= image_tag @product.photo %>
+    8:           </p>
+    9: 
+   10:           <p>
+  
+app/views/products/show.html.erb:7:in `_app_views_products_show_html_erb___962955380367593866_70095615674380'
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 15:58:18 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `photo' for nil:NilClass):
+    4:       <div class="row justify-content-md-center">
+    5:         <div class="col-md-9"
+    6:           <p>
+    7:             <%= image_tag@product.photo %>
+    8:           </p>
+    9: 
+   10:           <p>
+  
+app/views/products/show.html.erb:7:in `_app_views_products_show_html_erb___962955380367593866_70095638241720'
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:01:14 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 207ms (Views: 197.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:01:46 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 163ms (Views: 158.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:02:19 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:6: syntax error, unexpected '<'
+...freeze;@output_buffer.append=(<p>
+...                              ^
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:8: syntax error, unexpected '<', expecting ')'
+          </p>);@output_buffer.safe_appe...
+          ^
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:12: unknown regexp option - p
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:12: unmatched close parenthesis: /p>);@output_buffer.safe_append='
+
+          <p>
+
+          </
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:14: syntax error, unexpected '<'
+          <p>
+          ^
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:19: unknown regexp options - dv
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:20: syntax error, unexpected '<'
+      </div>
+      ^
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:21: unknown regexp options - dv
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:22: syntax error, unexpected '<'
+  </div>
+  ^
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:23: unknown regexp options - dv
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:28: unterminated string meets end of file
+          end
+             ^
+/home/daniela/Escritorio/desafio-latam/proyecto_final/proyectofinal2/app/views/products/show.html.erb:28: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^):
+  
+app/views/products/show.html.erb:6: syntax error, unexpected '<'
+app/views/products/show.html.erb:8: syntax error, unexpected '<', expecting ')'
+app/views/products/show.html.erb:12: unknown regexp option - p
+app/views/products/show.html.erb:12: unmatched close parenthesis: /p>);@output_buffer.safe_append='
+app/views/products/show.html.erb:14: syntax error, unexpected '<'
+app/views/products/show.html.erb:19: unknown regexp options - dv
+app/views/products/show.html.erb:20: syntax error, unexpected '<'
+app/views/products/show.html.erb:21: unknown regexp options - dv
+app/views/products/show.html.erb:22: syntax error, unexpected '<'
+app/views/products/show.html.erb:23: unknown regexp options - dv
+app/views/products/show.html.erb:28: unterminated string meets end of file
+app/views/products/show.html.erb:28: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:07:56 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 191ms (Views: 176.6ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:08:01 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 180ms (Views: 176.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:09:16 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"5Oeef20KoNWMl5Np+B92jD+I/IXVy5wUEImYUdoESLTJWENzk7W0XRR42zzpTUjLALGid+nWLWU0gHsCxi1nhQ==", "id"=>"25"}
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 194ms (Views: 190.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/admin/products" for 127.0.0.1 at 2019-10-18 16:09:59 -0300
+Processing by Admin::ProductsController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "products" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "products" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "products" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb (349.7ms)
+Completed 200 OK in 397ms (Views: 346.8ms | ActiveRecord: 22.2ms)
+
+
+Started GET "/admin/products/new" for 127.0.0.1 at 2019-10-18 16:10:01 -0300
+Processing by Admin::ProductsController#new as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/new.html.arb
+  Rendered /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/new.html.arb (169.5ms)
+Completed 200 OK in 181ms (Views: 175.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/admin/products" for 127.0.0.1 at 2019-10-18 16:10:33 -0300
+Processing by Admin::ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ko/yP5EvktbCJIxvfJ04ky+pCQnWkeDULAEryV/X2ae/MC8zb5CGXlrLxDptzwbUEJBX++qMUaUICMiaQ/72lg==", "product"=>{"name"=>"dani", "photo"=>"https://i.stack.imgur.com/EmUHM.jpg", "price"=>"1000", "description"=>"jdfhsjdfb"}, "commit"=>"Create Product"}
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "photo", "price", "created_at", "updated_at", "description") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dani"], ["photo", "https://i.stack.imgur.com/EmUHM.jpg"], ["price", 1000], ["created_at", "2019-10-18 19:10:33.241160"], ["updated_at", "2019-10-18 19:10:33.241160"], ["description", "jdfhsjdfb"]]
+  [1m[35m (33.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/products/30
+Completed 302 Found in 59ms (ActiveRecord: 34.8ms)
+
+
+Started GET "/admin/products/30" for 127.0.0.1 at 2019-10-18 16:10:33 -0300
+Processing by Admin::ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/show.html.arb
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3[0m  [["resource_type", "Product"], ["resource_id", 30], ["namespace", "admin"]]
+  [1m[36mActiveAdmin::Comment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3 LIMIT $4 OFFSET $5[0m  [["resource_type", "Product"], ["resource_id", 30], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  Rendered /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/show.html.arb (213.1ms)
+Completed 200 OK in 224ms (Views: 211.5ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-18 16:10:36 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (7.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 216ms (Views: 211.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:22:28 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"LKQ40SxtMxupxzDVHuVMy2v6/nDu1LuuWqmKccMnwd4BG+Xd0tInkzEoeIAPt3KMVMOggtLJCt9+oGki3w7u7w==", "id"=>"25"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 214ms (Views: 182.6ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:22:56 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"LKQ40SxtMxupxzDVHuVMy2v6/nDu1LuuWqmKccMnwd4BG+Xd0tInkzEoeIAPt3KMVMOggtLJCt9+oGki3w7u7w==", "id"=>"25"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 248ms (Views: 243.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:24:41 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"25"}
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 280ms (Views: 274.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:27:22 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"25"}
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 190ms (Views: 184.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/products/25" for 127.0.0.1 at 2019-10-18 16:28:02 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"25"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 162ms (Views: 156.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/products/30/edit" for 127.0.0.1 at 2019-10-18 16:28:16 -0300
+Processing by Admin::ProductsController#edit as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/edit.html.arb
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendered /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/edit.html.arb (178.8ms)
+Completed 200 OK in 216ms (Views: 184.1ms | ActiveRecord: 5.2ms)
+
+
+Started PATCH "/admin/products/30" for 127.0.0.1 at 2019-10-18 16:28:51 -0300
+Processing by Admin::ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0mwYfpQBxs+s87isoZq2feSvTd+lz+zL40Z4juQNhvb/08Vyar7SRzQc8PmwyIg625YTLZnSXbrHT5vd+CSpxw==", "product"=>{"name"=>"dani", "photo"=>"https://i.stack.imgur.com/EmUHM.jpg", "price"=>"1000", "description"=>"jdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh jdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\n\r\nv"}, "commit"=>"Update Product", "id"=>"30"}
+  [1m[36mAdminUser Load (1.0ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (3.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Update (1.8ms)[0m  [1m[33mUPDATE "products" SET "description" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["description", "jdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh jdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\njdfhsjdfbsadksjfhdlSJDFHLKJHSKLJHKLsjdKLJKLJdhlKJHDLKJDHAKLsjdhslkjADHLKAJdhlaskjldksjlksjadfhdlkjhdflkjhdflkjdfhlksdjflkasjfh\r\n\r\nv"], ["updated_at", "2019-10-18 19:28:51.079553"], ["id", 30]]
+  [1m[35m (15.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/products/30
+Completed 302 Found in 48ms (ActiveRecord: 22.0ms)
+
+
+Started GET "/admin/products/30" for 127.0.0.1 at 2019-10-18 16:28:51 -0300
+Processing by Admin::ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/show.html.arb
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3[0m  [["resource_type", "Product"], ["resource_id", 30], ["namespace", "admin"]]
+  [1m[36mActiveAdmin::Comment Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3 LIMIT $4 OFFSET $5[0m  [["resource_type", "Product"], ["resource_id", 30], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  Rendered /home/daniela/.rvm/gems/ruby-2.5.3@geocodingII/gems/activeadmin-2.4.0/app/views/active_admin/resource/show.html.arb (204.6ms)
+Completed 200 OK in 216ms (Views: 207.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:29:03 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"LKQ40SxtMxupxzDVHuVMy2v6/nDu1LuuWqmKccMnwd4BG+Xd0tInkzEoeIAPt3KMVMOggtLJCt9+oGki3w7u7w==", "id"=>"30"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 224ms (Views: 219.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:31:40 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"LKQ40SxtMxupxzDVHuVMy2v6/nDu1LuuWqmKccMnwd4BG+Xd0tInkzEoeIAPt3KMVMOggtLJCt9+oGki3w7u7w==", "id"=>"30"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 182ms (Views: 178.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:32:55 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 169ms (Views: 164.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products/%3Cimg%20src=" for 127.0.0.1 at 2019-10-18 16:32:56 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"<img src="}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=<img src=):
+  
+app/controllers/products_controller.rb:7:in `show'
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:34:46 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 161ms (Views: 157.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:35:44 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 155ms (Views: 152.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:42:31 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 184ms (Views: 178.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:44:29 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 163ms (Views: 157.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:46:06 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 324ms (Views: 318.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/products/30" for 127.0.0.1 at 2019-10-18 16:46:43 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 190ms (Views: 186.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products/26" for 127.0.0.1 at 2019-10-18 16:48:52 -0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"LKQ40SxtMxupxzDVHuVMy2v6/nDu1LuuWqmKccMnwd4BG+Xd0tInkzEoeIAPt3KMVMOggtLJCt9+oGki3w7u7w==", "id"=>"26"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 709ms (Views: 669.0ms | ActiveRecord: 11.3ms)
+
+

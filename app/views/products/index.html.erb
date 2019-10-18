@@ -6,7 +6,7 @@
           <div class="card">
             <%= image_tag product.photo, class: 'card-img-top' %>
             <div class="card-body">
-              <h5> <%=link_to product.name, products_path, method: :post %> </h5>
+              <h5> <%=link_to product.name, product_path(product), method: :get %> </h5>
               <p> <%= product.price %> </p>
               <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn btn-success', method: :post  %>
             </div>
