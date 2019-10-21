@@ -2064,3 +2064,83 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 66ms (Views: 63.1ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2019-10-21 14:21:12 -0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (243.3ms)
+Completed 500 Internal Server Error in 283ms (ActiveRecord: 8.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `product_path' for #<#<Class:0x00000000035a6fd8>:0x0000000003616fb8>
+Did you mean?  products_path):
+    13:           <div class="card" style="max-width: 300px;">
+    14:             <%= image_tag product.photo, class: 'card-img-top' %>
+    15:             <div class="card-body">
+    16:               <h5> <%=link_to product.name, product_path(product), method: :get %> </h5>
+    17:               <p> <%= product.price %> </p>
+    18:               <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn', method: :post  %>
+    19:             </div>
+  
+app/views/products/index.html.erb:16:in `block (2 levels) in _app_views_products_index_html_erb__2771421834775975849_28117240'
+app/views/products/index.html.erb:11:in `each'
+app/views/products/index.html.erb:11:in `block in _app_views_products_index_html_erb__2771421834775975849_28117240'
+app/views/products/index.html.erb:10:in `each_slice'
+app/views/products/index.html.erb:10:in `_app_views_products_index_html_erb__2771421834775975849_28117240'
+Started GET "/" for 127.0.0.1 at 2019-10-21 14:21:38 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 648ms (Views: 645.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-21 14:21:56 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 38ms (Views: 34.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-21 14:22:04 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 33ms (Views: 31.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-21 14:22:13 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-21 14:22:39 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 34ms (Views: 31.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-10-21 14:32:04 -0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered products/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 35ms (Views: 33.0ms | ActiveRecord: 0.7ms)
+
+

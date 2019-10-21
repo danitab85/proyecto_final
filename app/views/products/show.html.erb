@@ -1,0 +1,17 @@
+<div class="basic-body">
+  <div class= "basic-body__presentaation">
+    <div class= "container">
+      <div class="row justify-content-md-center">
+        <div class="card mb-3">
+          <%= image_tag @product.photo, class: 'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title"><%= @product.name %></h5>
+            <p class="card-text"><%= @product.description %></p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+          <%= link_to 'Back', root_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

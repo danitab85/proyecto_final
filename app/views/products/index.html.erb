@@ -1,14 +1,22 @@
+<div class="jumbotron jumbotron-fluid" style="margin-top:60px;>
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">KIKI es la comunidad</p>
+    <p class="lead"> de las Ideas y el Emprendimiento</p>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
     <% @products.each_slice(4) do |row| %>
       <% row.each do |product| %>
-        <div class="col">
-          <div class="card">
+        <div class="col" style="margin-top: 100px;">
+          <div class="card" style="max-width: 300px;">
             <%= image_tag product.photo, class: 'card-img-top' %>
             <div class="card-body">
-              <h5> <%= product.name %> </h5>
+              <h5> <%=link_to product.name, products_path(product), method: :get %> </h5>
               <p> <%= product.price %> </p>
-              <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn btn-success', method: :post  %>
+              <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn', method: :post  %>
             </div>
           </div>
         </div>
