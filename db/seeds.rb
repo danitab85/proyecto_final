@@ -10,12 +10,6 @@ Billing.destroy_all
 Order.destroy_all
 Product.destroy_all
 User.destroy_all
+AdminUser.destroy_all
 
-12.times do |i|
-  Product.create(
-    name: Faker::Commerce.product_name,
-    price: Faker::Commerce.price.to_i,
-    photo: "http://lorempixel.com/400/200/technics/#{i + 1}/"
-  )
-end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

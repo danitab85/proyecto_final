@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+    
 
   def create
     p = Product.find(params[:product_id])
@@ -23,4 +24,5 @@ class OrdersController < ApplicationController
     @orders = current_user.orders.where(payed: false)
     @total = @orders.pluck("price * quantity").sum()
   end
+
 end

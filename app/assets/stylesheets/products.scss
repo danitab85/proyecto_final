@@ -2,10 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .btn {
-
     color: #fff;
     background-color: #6D6C98;
     border-color: #FBD45F;
-    
+
+}
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(https://cdn.pixabay.com/photo/2018/02/03/09/51/bulletin-board-3127287__340.jpg);
+
+    background-size: cover;
 
 }
