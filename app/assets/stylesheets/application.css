@@ -15,7 +15,13 @@
  */
 
 .main-content{
-  margin-top: 40px;
+  margin: 40px;
 }
 
-img{width: 150px;} 
+img{
+  width: 160px;
+}
+
+.navbar {
+  padding: 3vh;
+}
