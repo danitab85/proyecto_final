@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-    
+
+
 
   def create
     p = Product.find(params[:product_id])
@@ -23,6 +24,15 @@ class OrdersController < ApplicationController
   def index
     @orders = current_user.orders.where(payed: false)
     @total = @orders.pluck("price * quantity").sum()
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: 'order was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
 end
