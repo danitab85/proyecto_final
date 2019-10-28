@@ -24,7 +24,7 @@ ActiveAdmin.register Product do
      f.input :price
      f.input :description
      f.actions # Agrega los botones Submit y Cancel
-    end
+  end
 
 
 end

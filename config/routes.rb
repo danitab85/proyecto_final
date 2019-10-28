@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :contents
   get 'users/show'
   
   devise_for :admin_users, ActiveAdmin::Devise.config
