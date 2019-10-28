@@ -22,7 +22,7 @@
           </li>
         <% else %>
         <li class="nav-item">
-          <a class="nav-link"><%= current_user.name %></a>
+          <%= link_to current_user.name,  users_index_path, class: 'nav-link'%>
         </li>
         <li class="nav-item">
           <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>

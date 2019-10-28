@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   resources :contents
-  get 'users/show'
+  get 'users/index'
   get 'schools/index'
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :products, only: [:index, :show] do

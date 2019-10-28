@@ -3,7 +3,6 @@
     <div class= "container">
       <div class="row justify-content-md-center">
         <div class="card mb-3">
-<<<<<<< HEAD
           <% if @product.image.attached? %>
           <%= image_tag @product.image, class: 'card-img-top' %>
           <% end %>
@@ -12,20 +11,8 @@
             <p class="card-text"><%= @product.description %></p>
             <%= link_to 'Back', root_path %>
           </div>
-=======
-          <%= image_tag @product.photo, class: 'card-img-top' %>
-          <div class="card-body">
-            <h5 class="card-title"><%= @product.name %></h5>
-            <p class="card-text"><%= @product.description %></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-          <%= link_to 'Back', root_path %>
->>>>>>> index_products
         </div>
       </div>
     </div>
   </div>
-<<<<<<< HEAD
-=======
 </div>
->>>>>>> index_products

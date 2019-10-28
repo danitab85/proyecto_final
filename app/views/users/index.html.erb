@@ -1,0 +1,30 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 center"><%=current_user.name%></h1>
+    <h3 class="lead">STUDENT</h3>
+  </div>
+</div>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Cursos')">Mis Cursos</button>
+  <button class="tablinks" onclick="openCity(event, 'Certificaciones')">Certificaciones</button>
+  <button class="tablinks" onclick="openCity(event, 'Perfil')">Editar Perfil</button>
+  <button class="tablinks" onclick="openCity(event, 'Sesión')">Cerrar Sesión</button>
+</div>
+
+<div id="Cursos" class="tabcontent">
+  <h3>Mis Cursos</h3>
+  <%@products.each do |product|%>
+  <%=link_to product.name, contents_path%>
+  <%end%>
+</div>
+
+<div id="Certificaciones" class="tabcontent">
+  <h3>Certificaciones</h3>
+  <p>Paris is the capital of France.</p>
+</div>
+
+<div id="Editar" class="tabcontent">
+  <h3>Editar Perfil</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>

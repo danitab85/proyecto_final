@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  
-  def show
+
+  def index
     @user = current_user
+    @products = current_user.products
   end
+
+
+
 end
