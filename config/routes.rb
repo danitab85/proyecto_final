@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'schools/index'
+  resources :contents
   get 'users/show'
-
+  get 'schools/index'
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :products, only: [:index, :show] do
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :destroy] do
   	collection do
   		get 'clean'
-      
+
   	end
   end
 

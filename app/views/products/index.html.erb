@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-4">KIKI hace</h1>
-    <p class="lead">que tus ideas se conviertan en proyctos.</p>
-  </div>
-</div>
-=======
 <div class="jumbotron jumbotron-fluid" style="margin-top:60px;>
   <div class="container">
     <h1 class="display-4">Fluid jumbotron</h1>
@@ -14,22 +6,16 @@
   </div>
 </div>
 
->>>>>>> index_products
+
 <div class="container">
   <div class="row">
     <% @products.each_slice(4) do |row| %>
       <% row.each do |product| %>
         <div class="col" style="margin-top: 100px;">
           <div class="card" style="max-width: 300px;">
-<<<<<<< HEAD
             <%= image_tag product.image, class: 'card-img-top' if product.image.attached? %>
             <div class="card-body">
               <h5> <%=link_to product.name, product_path(product), method: :get %> </h5>
-=======
-            <%= image_tag product.photo, class: 'card-img-top' %>
-            <div class="card-body">
-              <h5> <%=link_to product.name, products_path(product), method: :get %> </h5>
->>>>>>> index_products
               <p> <%= product.price %> </p>
               <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn', method: :post  %>
             </div>
