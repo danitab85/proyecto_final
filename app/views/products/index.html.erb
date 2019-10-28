@@ -10,7 +10,7 @@
       <% row.each do |product| %>
         <div class="col" style="margin-top: 100px;">
           <div class="card" style="max-width: 300px;">
-            <%= image_tag product.photo, class: 'card-img-top' %>
+            <%= image_tag product.image, class: 'card-img-top' if product.image.attached? %>
             <div class="card-body">
               <h5> <%=link_to product.name, product_path(product), method: :get %> </h5>
               <p> <%= product.price %> </p>
@@ -19,7 +19,7 @@
           </div>
         </div>
       <% end %>
-      <div class="w-100" style="margin-top:20px;"> </div>
+      <div class="w-70" style="margin-top:20px;"> </div>
     <% end %>
   </div>
 </div>

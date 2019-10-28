@@ -3,13 +3,15 @@
     <div class= "container">
       <div class="row justify-content-md-center">
         <div class="card mb-3">
-          <%= image_tag @product.photo, class: 'card-img-top' %>
+          <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: 'card-img-top' %>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= @product.name %></h5>
             <p class="card-text"><%= @product.description %></p>
             <%= link_to 'Back', root_path %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
