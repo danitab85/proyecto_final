@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'schools/index'
   get 'users/show'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
