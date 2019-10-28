@@ -1,3 +1,35 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.vertical-menu {
+  width: 250px; /* Set a width if you like */
+}
+
+.vertical-menu a {
+  background-color: #eee; /* Grey background color */
+  color: grey; /* Grey text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+  background-color: #6D6C98; /* Add a green color to the "active/current" link */
+  padding: 40px;
+  color: white;
+}
+
+#margen {
+  width: 700px;
+  padding: 15px;
+}
+
+#title {
+  background-color: grey; /* Add a green color to the "active/current" link */
+  padding: 20px;
+  color: white;
+}

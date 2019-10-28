@@ -1,2 +1,32 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 center"><%=current_user.name%></h1>
+    <h3 class="lead">STUDENT</h3>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 5vh">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="vertical-menu">
+        <a href="#" class="active">Bienvenido <%=current_user.email%></a>
+        <a href="#">Mis Cursos</a>
+        <a href="#">Certificaciones</a>
+        <a href="#">Editar Perfil</a>
+        <a href="#">Cerrar sesión</a>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div id="margen" class="vertical-menu">
+        <a id="title" href="#" class="active">Mis Cursos</a>
+        <a href="#">Mis Cursos</a>
+        <a href="#">Certificaciones</a>
+        <a href="#">Editar Perfil</a>
+        <a href="#">Cerrar sesión</a>
+      </div>
+    </div>
+
+  </div>
+</div>
