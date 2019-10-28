@@ -5,8 +5,13 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
+<<<<<<< HEAD
   permit_params :name, :description, :price, :image
     #
+=======
+  permit_params :photo, :name, :description, :price
+  #
+>>>>>>> index_products
   # or
   #
   # permit_params do
@@ -15,6 +20,7 @@ ActiveAdmin.register Product do
   #   permitted
   # end
 
+<<<<<<< HEAD
 
 
   form do |f|
@@ -27,4 +33,6 @@ ActiveAdmin.register Product do
     end
 
 
+=======
+>>>>>>> index_products
 end
