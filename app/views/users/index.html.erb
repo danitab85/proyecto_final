@@ -6,16 +6,16 @@
 </div>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Cursos')">Mis Cursos</button>
-  <button class="tablinks" onclick="openCity(event, 'Certificaciones')">Certificaciones</button>
-  <button class="tablinks" onclick="openCity(event, 'Perfil')">Editar Perfil</button>
-  <button class="tablinks" onclick="openCity(event, 'Sesión')">Cerrar Sesión</button>
+  <button class="tablinks" onclick="openPanel(event, 'Cursos')">Mis Cursos</button>
+  <button class="tablinks" onclick="openPanel(event, 'Certificaciones')">Certificaciones</button>
+  <button class="tablinks" onclick="openPanel(event, 'Perfil')">Editar Perfil</button>
+  <button class="tablinks" onclick="openPanel(event, 'Sesión')">Cerrar Sesión</button>
 </div>
 
 <div id="Cursos" class="tabcontent">
   <h3>Mis Cursos</h3>
   <%@products.each do |product|%>
-  <%=link_to product.name, contents_path%>
+  <ul><%=link_to product.name, contents_path%></ul>
   <%end%>
 </div>
 
