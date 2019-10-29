@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<% if @content.image.attached? %>
+  <%= video_tag @content.image, class: 'card-img-top' %>
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @content.name %>
