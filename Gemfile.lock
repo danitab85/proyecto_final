@@ -90,6 +90,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    chartkick (3.2.1)
     childprocess (3.0.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -118,6 +119,8 @@ GEM
     formtastic_i18n (0.6.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (4.1.2)
+      activesupport (>= 4.2)
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -311,9 +314,11 @@ DEPENDENCIES
   aws-sdk-s3
   byebug
   capybara (~> 2.13)
+  chartkick
   coffee-rails (~> 4.2)
   devise
   faker
+  groupdate
   image_processing (~> 1.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

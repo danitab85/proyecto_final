@@ -1,0 +1,15 @@
+
+<h2>Por día</h2>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<% my_chart = Order.group_by_day(:created_at).count %>
+<%= column_chart my_chart %>
+
+<h2>Por mes</h2>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<% my_chart = Order.group_by_month(:created_at).count %>
+<%= column_chart my_chart %>
+
+<h2>Por año</h2>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<% my_chart = Order.group_by_year(:created_at).count %>
+<%= column_chart my_chart %>
