@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html style="margin-top: 40px">
-  <head>
-    <title>KIKI APP</title>
-    <%= csrf_meta_tags %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+   <meta name="Kiki App" content="Comunidad de emprendedores">
+   <meta name="keywords" content="HTML,CSS,XML,JavaScript,Ruby">
+   <meta name="author" content="Daniela Ballesteros">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </head>
+  <title>KIKI APP</title>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-  <body>
-    <%= render 'shared/navbar'%>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <% if alert.present? %>
-      <div class="alert alert-warning" role="alert">
-        <%= alert %>
-      </div>
-    <% end %>
+  <%= favicon_link_tag asset_path('favicon-16x16.png') %>
+</head>
 
-    <% if notice.present? %>
-      <div class="alert alert-success" role="alert">
-        <%= notice %>
-      </div>
-    <% end %>
+<body>
+  <%= render 'shared/navbar'%>
 
-    <div class="main-content">
-      <%= yield %>
-    </div>
-  </body>
+  <% if alert.present? %>
+  <div class="alert alert-warning" role="alert">
+    <%= alert %>
+  </div>
+  <% end %>
+
+  <% if notice.present? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+  <% end %>
+
+  <div class="main-content">
+    <%= yield %>
+  </div>
+
+  <%= render 'shared/footer'%>
+</body>
 </html>
