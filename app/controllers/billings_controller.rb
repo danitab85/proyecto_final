@@ -17,7 +17,7 @@ class BillingsController < ApplicationController
     payment = PayPal::SDK::REST::Payment.new({
       intent: "sale",
         payer: {payment_method: "paypal" },
-        redirect_urls: {return_url: "http://localhost:3000/billings/execute", cancel_url: "http://localhost:3000/" },
+        redirect_urls: {return_url: "https://quiet-beyond-24696.herokuapp.com/billings/execute", cancel_url: "https://quiet-beyond-24696.herokuapp.com/" },
         transactions: [{
           item_list: {items: items},
           amount: {
@@ -26,7 +26,7 @@ class BillingsController < ApplicationController
             description: "Compra desde E-commerce Rails."}]
       })
 
-    
+
 
     if payment.create
       redirect_url = payment.links.find{|v| v.method == "REDIRECT"}.href
